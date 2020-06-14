@@ -1,7 +1,7 @@
 import React from 'react'
 import './Item.css'
 
-const Item = ({ index, title, checked, updateChecked, removeItem }) => {
+const Item = ({ index, title, checked, removeItem, updateChecked }) => {
   return (
     <div className="item">
       <input
@@ -9,7 +9,7 @@ const Item = ({ index, title, checked, updateChecked, removeItem }) => {
         checked={checked}
         onChange={() => updateChecked(index)}
       />
-      <span className="title">
+      <span className={"title " + (checked ? "checked" : "")}>
         { title }
       </span>
       <button className="delete-button" onClick={() => removeItem(index)}>delete</button>

@@ -1,6 +1,9 @@
 .item{
   display: flex;
 }
+.item .checked{
+  text-decoration: line-through;
+}
 .title{
   flex: 1
 }

@@ -19,21 +19,6 @@ const TodoList = () => {
     },
   ])
 
-  const updateChecked = (index) => {
-    let newList = Object.assign([], list)
-
-    newList[index].checked = !newList[index].checked
-
-    setList(newList)
-  }
-  const removeItem = (index) => {
-    let newList = Object.assign([], list)
-
-    newList.splice(index, 1)
-
-    setList(newList)
-  }
-
   const addItem = (title) => {
     let newList = Object.assign([], list)
 
@@ -44,20 +29,34 @@ const TodoList = () => {
 
     setList(newList)
   }
+  const removeItem = (index) => {
+    let newList = Object.assign([], list)
+
+    newList.splice(index, 1)
+
+    setList(newList)
+  }
+  const updateChecked = (index) => {
+    let newList = Object.assign([], list)
+
+    newList[index].checked = !newList[index].checked
+
+    setList(newList)
+  }
 
   return (
     <div>
       We're in TodoList component
       <Add
-      addItem={addItem}/>
+        addItem={addItem}/>
 
       { list.map( (item, index) =>
         <Item
           index={index}
           title={item.title}
           checked={item.checked}
-          updateChecked={updateChecked}
           removeItem={removeItem}
+          updateChecked={updateChecked}
           key={index}
         />
       ) }

@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 
 const Add = ({addItem}) => {
   const [ value, setValue ] = useState('')
+
   const handleSubmit = () => {
     addItem(value)
 
     setValue('')
   }
+  
   return (
     <div>
       <form onSubmit={e => e.preventDefault()}>
