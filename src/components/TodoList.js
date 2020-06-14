@@ -46,20 +46,30 @@ const TodoList = () => {
 
   return (
     <div>
-      We're in TodoList component
+      <h3>Add new item</h3>
       <Add
         addItem={addItem}/>
 
-      { list.map( (item, index) =>
-        <Item
-          index={index}
-          title={item.title}
-          checked={item.checked}
-          removeItem={removeItem}
-          updateChecked={updateChecked}
-          key={index}
-        />
-      ) }
+      <hr />
+
+      <div className="card">
+        <div className="card-header">
+          Todo List
+          <input className="form-control"/>
+        </div>
+        <div className="card-body">
+          { list.map( (item, index) =>
+            <Item
+              index={index}
+              title={item.title}
+              checked={item.checked}
+              removeItem={removeItem}
+              updateChecked={updateChecked}
+              key={index}
+            />
+          ) }
+        </div>
+      </div>
     </div>
   )
 }

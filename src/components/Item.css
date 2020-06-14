@@ -1,17 +1,8 @@
-.item{
-  display: flex;
-}
-.item .checked{
-  text-decoration: line-through;
-}
 .title{
-  flex: 1
+  flex: 1;
+  border: 1px solid #ced4da;
+  padding: 8px;
 }
-.delete-button{
-  color: #ffffff;
-  background: #ff012d;
-  border: 0px;
-  margin: 5px;
-  padding: 3px 10px;
-  border-radius: 3px;
+.title.checked{
+  text-decoration: line-through;
 }
