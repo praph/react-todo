@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Add from './Add';
 import Item from './Item';
+import FilterButtons from './FilterButtons';
+import SearchText from './SearchText';
 
 const TodoList = () => {
   const [ list, setList ] = useState([
@@ -18,6 +20,9 @@ const TodoList = () => {
       checked: false,
     },
   ])
+
+  const [ searchText, setSearchText ] = useState('')
+  const [ searchButton, setSearchButton ] = useState('all')
 
   const addItem = (title) => {
     let newList = Object.assign([], list)
@@ -44,6 +49,14 @@ const TodoList = () => {
     setList(newList)
   }
 
+  let filteredList = list.filter(item => item.title.indexOf(searchText) > -1)
+  if(searchButton === 'checked') {
+    filteredList = filteredList.filter(item => item.checked)
+  }
+  if(searchButton === 'unchecked') {
+    filteredList = filteredList.filter(item => !item.checked)
+  }
+
   return (
     <div>
       <h3>Add new item</h3>
@@ -52,13 +65,28 @@ const TodoList = () => {
 
       <hr />
 
+      <div className="row">
+        <div className="col-sm-6">
+          <FilterButtons
+            searchButton={searchButton}
+            setSearchButton={setSearchButton}/>
+        </div>
+        <div className="col-sm-6">
+          <SearchText setSearchText={setSearchText}/>
+        </div>
+      </div>
+
+      <hr />
+
       <div className="card">
         <div className="card-header">
           Todo List
-          <input className="form-control"/>
+          <div class="float-right">
+            <small>rezultate { filteredList.length } / { list.length }</small>
+          </div>
         </div>
         <div className="card-body">
-          { list.map( (item, index) =>
+          { filteredList.map( (item, index) =>
             <Item
               index={index}
               title={item.title}
