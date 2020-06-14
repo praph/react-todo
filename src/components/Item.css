@@ -1,0 +1,14 @@
+.item{
+  display: flex;
+}
+.title{
+  flex: 1
+}
+.delete-button{
+  color: #ffffff;
+  background: #ff012d;
+  border: 0px;
+  margin: 5px;
+  padding: 3px 10px;
+  border-radius: 3px;
+}

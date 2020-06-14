@@ -1,9 +1,18 @@
 import React from 'react'
+import './Item.css'
 
-const Item = () => {
+const Item = ({ index, title, checked, updateChecked, removeItem }) => {
   return (
-    <div>
-      todo item
+    <div className="item">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => updateChecked(index)}
+      />
+      <span className="title">
+        { title }
+      </span>
+      <button className="delete-button" onClick={() => removeItem(index)}>delete</button>
     </div>
   )
 }

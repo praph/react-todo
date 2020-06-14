@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Add = () => {
+const Add = ({addItem}) => {
+  const [ value, setValue ] = useState('')
+  const handleSubmit = () => {
+    addItem(value)
+
+    setValue('')
+  }
   return (
     <div>
-      <input />
+      <form onSubmit={e => e.preventDefault()}>
+        <input value={value} onChange={ref => setValue(ref.target.value)}/>
+        <button onClick={() => handleSubmit()}>go</button>
+      </form>
     </div>
   )
 }
